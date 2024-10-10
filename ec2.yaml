@@ -1,1 +1,19 @@
-hi enter your content here!!!
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Basic EC2 instance
+
+Resources:
+  MyEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: "t3.micro"  # Free tier instance
+      ImageId: "ami-08eb150f611ca277f"  # Example for ubuntu (update for your region)
+      KeyName: "devops"  # Replace with your actual key pair
+
+Outputs:
+  InstanceId:
+    Description: "EC2 Instance ID"
+    Value: !Ref MyEC2Instance
+  PublicIp:
+    Description: "Public IP address of the instance"
+    Value: !GetAtt MyEC2Instance.PublicIp
+
